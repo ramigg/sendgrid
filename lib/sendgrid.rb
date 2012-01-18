@@ -147,8 +147,8 @@ module SendGrid
           raise ArgumentError.new("Array for #{find} is not the same size as the recipient array") if replace.size != @sg_recipients.size
         end
       end
-      puts "SendGrid X-SMTPAPI: #{sendgrid_json_headers(message)}" if Object.const_defined?("SENDGRID_DEBUG_OUTPUT") && SENDGRID_DEBUG_OUTPUT
-      self.headers['X-SMTPAPI'] = sendgrid_json_headers(message)
+      puts "SendGrid Q-SMTPAPI: #{sendgrid_json_headers(message)}" if Object.const_defined?("SENDGRID_DEBUG_OUTPUT") && SENDGRID_DEBUG_OUTPUT
+      self.headers['Q-SMTPAPI'] = sendgrid_json_headers(message)
     end
 
   else
@@ -162,8 +162,8 @@ module SendGrid
           raise ArgumentError.new("Array for #{find} is not the same size as the recipient array") if replace.size != @sg_recipients.size
         end
       end
-      puts "SendGrid X-SMTPAPI: #{sendgrid_json_headers(mail)}" if Object.const_defined?("SENDGRID_DEBUG_OUTPUT") && SENDGRID_DEBUG_OUTPUT
-      @mail['X-SMTPAPI'] = sendgrid_json_headers(mail)
+      puts "SendGrid Q-SMTPAPI: #{sendgrid_json_headers(mail)}" if Object.const_defined?("SENDGRID_DEBUG_OUTPUT") && SENDGRID_DEBUG_OUTPUT
+      @mail['Q-SMTPAPI'] = sendgrid_json_headers(mail)
     end
 
   end
