@@ -19,7 +19,7 @@ module SendGrid
         attr_accessor :default_sg_category, :default_sg_options, :default_subscriptiontrack_text,
                       :default_footer_text, :default_spamcheck_score
       end
-      attr_accessor :sg_category, :sg_options, :sg_disabled_options, :sg_recipients, :sg_substitutions, :subscriptiontrack_text, :footer_text, :spamcheck_score
+      attr_accessor :sg_category, :sg_options, :sg_disabled_options, :sg_recipients, :sg_substitutions, :subscriptiontrack_text, :footer_text, :spamcheck_score, :subject_text
     end
     
     # NOTE: This commented-out approach may be a "safer" option for Rails 3, but it 
@@ -34,6 +34,10 @@ module SendGrid
   
   module ClassMethods
     
+    def sendgrid_subject(subject)
+      self.subject_text = subject
+    end
+
     # Sets a default category for all emails.
     # :use_subject_lines has special behavior that uses the subject-line of
     # each outgoing email for the SendGrid category. This special behavior
